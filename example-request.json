@@ -1,0 +1,253 @@
+{
+  "input": {
+    "workflow": {
+      "6": {
+        "inputs": {
+          "text": "A man appears from left. she sucks his penis. Static camera, fixed viewpoint, still shot. Do not change face.",
+          "clip": [
+            "38",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "7": {
+        "inputs": {
+          "text": "deformed, ugly, worst quality, low quality, jpeg artifacts, blurry, out of frame, extra limbs, extra fingers, extra legs, extra arms, extra heads, duplicated face, poorly drawn hands, poorly drawn face, bad anatomy, asymmetrical face, ugly hands, long neck, distorted eyes, missing fingers, missing arms, fused fingers, multiple faces, cropped, morbid, watermark, text, logo, signature, cartoon, painting, 3d, sketch, anime, unrealistic, over-saturated, overexposed, harsh lighting, plastic skin, unnatural skin texture, grainy, static, frozen pose, bad anatomy, bad hands, bad legs, extra limbs, extra digits, fused fingers, too many fingers, missing fingers, asymmetrical eyes, distorted face, unnatural facial expression, poorly drawn nose, poorly drawn mouth, missing ears, glossy skin, plastic skin, unnatural body proportion, sweaty skin, hard shadow, unrealistic lighting, motion blur, duplicate person, messy background, cluttered, cartoon style, anime style, painted, grain, pixelated, artifact",
+          "clip": [
+            "38",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncode",
+        "_meta": {
+          "title": "CLIPTextEncode"
+        }
+      },
+      "8": {
+        "inputs": {
+          "samples": [
+            "58",
+            0
+          ],
+          "vae": [
+            "39",
+            0
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "38": {
+        "inputs": {
+          "filename": "umt5_xxl_fp8_e4m3fn_scaled.safetensors"
+        },
+        "class_type": "CLIPLoader",
+        "_meta": {
+          "title": "CLIPLoader"
+        }
+      },
+      "39": {
+        "inputs": {
+          "filename": "wan_2.1_vae.safetensors"
+        },
+        "class_type": "VAELoader",
+        "_meta": {
+          "title": "VAELoader"
+        }
+      },
+      "57": {
+        "inputs": {
+          "text": "enable",
+          "model": [
+            "91",
+            0
+          ],
+          "positive": [
+            "63",
+            0
+          ],
+          "negative": [
+            "63",
+            1
+          ],
+          "latent_image": [
+            "63",
+            2
+          ]
+        },
+        "class_type": "KSamplerAdvanced",
+        "_meta": {
+          "title": "KSamplerAdvanced"
+        }
+      },
+      "58": {
+        "inputs": {
+          "text": "disable",
+          "model": [
+            "92",
+            0
+          ],
+          "positive": [
+            "63",
+            0
+          ],
+          "negative": [
+            "63",
+            1
+          ],
+          "latent_image": [
+            "57",
+            0
+          ]
+        },
+        "class_type": "KSamplerAdvanced",
+        "_meta": {
+          "title": "KSamplerAdvanced"
+        }
+      },
+      "63": {
+        "inputs": {
+          "value": 1280,
+          "positive": [
+            "6",
+            0
+          ],
+          "negative": [
+            "7",
+            0
+          ],
+          "vae": [
+            "39",
+            0
+          ],
+          "start_image": [
+            "75",
+            0
+          ],
+          "width": [
+            "70",
+            0
+          ],
+          "height": [
+            "70",
+            1
+          ]
+        },
+        "class_type": "WanImageToVideo",
+        "_meta": {
+          "title": "WanImageToVideo"
+        }
+      },
+      "70": {
+        "inputs": {
+          "image": [
+            "75",
+            0
+          ]
+        },
+        "class_type": "GetImageSize",
+        "_meta": {
+          "title": "GetImageSize"
+        }
+      },
+      "75": {
+        "inputs": {
+          "value": 720,
+          "image": [
+            "101",
+            0
+          ]
+        },
+        "class_type": "ImageResizeKJv2",
+        "_meta": {
+          "title": "ImageResizeKJv2"
+        }
+      },
+      "87": {
+        "inputs": {
+          "filename": "wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+          "title": "UNETLoader"
+        }
+      },
+      "90": {
+        "inputs": {
+          "filename": "wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors"
+        },
+        "class_type": "UNETLoader",
+        "_meta": {
+          "title": "UNETLoader"
+        }
+      },
+      "91": {
+        "inputs": {
+          "value": 5,
+          "model": [
+            "87",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingSD3",
+        "_meta": {
+          "title": "ModelSamplingSD3"
+        }
+      },
+      "92": {
+        "inputs": {
+          "value": 5,
+          "model": [
+            "90",
+            0
+          ]
+        },
+        "class_type": "ModelSamplingSD3",
+        "_meta": {
+          "title": "ModelSamplingSD3"
+        }
+      },
+      "101": {
+        "inputs": {
+          "image": "e0f2883669a0d74f36d566ab5e7be6de489297b1cddc7cb9cf2da34f68479f2f.png"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "103": {
+        "inputs": {
+          "value": 16,
+          "images": [
+            "8",
+            0
+          ]
+        },
+        "class_type": "CreateVideo",
+        "_meta": {
+          "title": "CreateVideo"
+        }
+      },
+      "104": {
+        "inputs": {
+          "filename": "video/ComfyUI",
+          "video": [
+            "103",
+            0
+          ]
+        },
+        "class_type": "SaveVideo",
+        "_meta": {
+          "title": "SaveVideo"
+        }
+      }
+    }
+  }
+}
